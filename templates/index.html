@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Report Disease Detection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            position: relative;
+        }
+
+        .title::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            height: 3px;
+            width: 60px;
+            border-radius: 5px;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .input-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-box span.details {
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .input-box input {
+            height: 45px;
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding: 0 15px;
+            border: 1px solid #ccc;
+            transition: all 0.3s ease;
+        }
+
+        .input-box input:focus {
+            border-color: #9b59b6;
+            box-shadow: 0 0 5px rgba(155, 89, 182, 0.3);
+        }
+
+        .input-box.full-width {
+            grid-column: span 2;
+            max-width: 50%;
+            margin: 0 auto;
+        }
+
+        .button {
+            margin: 15px 0;
+        }
+
+        .button button {
+            width: 100%;
+            height: 50px;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        }
+
+        .button button:hover {
+            background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .comparison-btn {
+            background: linear-gradient(135deg, #11998e, #38ef7d) !important;
+        }
+
+        .comparison-btn:hover {
+            background: linear-gradient(-135deg, #11998e, #38ef7d) !important;
+        }
+
+        .result-section {
+            margin-top: 30px;
+            padding: 25px;
+            border: 2px solid #9b59b6;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-section h2 {
+            margin-bottom: 15px;
+            color: #9b59b6;
+            font-size: 22px;
+        }
+
+        .result-section p {
+            margin-bottom: 10px;
+            line-height: 1.8;
+            color: #333;
+            font-size: 16px;
+            white-space: pre-line;
+        }
+
+        .disease-name {
+            font-size: 24px;
+            font-weight: 600;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .input-box.full-width {
+                max-width: 100%;
+            }
+
+            .container {
+                padding: 25px 20px;
+            }
+
+            .title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">Blood Report Disease Detection</div>
+        <div class="content">
+            <!-- Disease Detection Form -->
+            <form method="POST">
+                <div class="form-grid">
+                    <!-- WBC Count -->
+                    <div class="input-box">
+                        <span class="details">WBC Count</span>
+                        <input type="number" step="0.01" name="WBC" placeholder="Enter WBC Count" required>
+                    </div>
+
+                    <!-- RBC Count -->
+                    <div class="input-box">
+                        <span class="details">RBC Count</span>
+                        <input type="number" step="0.01" name="RBC" placeholder="Enter RBC Count" required>
+                    </div>
+
+                    <!-- Hemoglobin -->
+                    <div class="input-box">
+                        <span class="details">Hemoglobin</span>
+                        <input type="number" step="0.01" name="HGB" placeholder="Enter Hemoglobin Level" required>
+                    </div>
+
+                    <!-- Platelet Count -->
+                    <div class="input-box">
+                        <span class="details">Platelet Count</span>
+                        <input type="number" step="0.01" name="PLT" placeholder="Enter Platelet Count" required>
+                    </div>
+
+                    <!-- Neutrophils -->
+                    <div class="input-box">
+                        <span class="details">Neutrophils</span>
+                        <input type="number" step="0.01" name="NEUT" placeholder="Enter Neutrophils Count" required>
+                    </div>
+
+                    <!-- Lymphocytes -->
+                    <div class="input-box">
+                        <span class="details">Lymphocytes</span>
+                        <input type="number" step="0.01" name="LYMPH" placeholder="Enter Lymphocytes Count" required>
+                    </div>
+
+                    <!-- Monocytes -->
+                    <div class="input-box">
+                        <span class="details">Monocytes</span>
+                        <input type="number" step="0.01" name="MONO" placeholder="Enter Monocytes Count" required>
+                    </div>
+
+                    <!-- Eosinophils -->
+                    <div class="input-box">
+                        <span class="details">Eosinophils</span>
+                        <input type="number" step="0.01" name="EO" placeholder="Enter Eosinophils Count" required>
+                    </div>
+
+                    <!-- Basophils (Full Width, Centered) -->
+                    <div class="input-box full-width">
+                        <span class="details">Basophils</span>
+                        <input type="number" step="0.01" name="BASO" placeholder="Enter Basophils Count" required>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="button">
+                    <button type="submit">Predict Disease</button>
+                </div>
+            </form>
+
+            <!-- Model Comparison Button -->
+            <div class="button">
+                <button class="comparison-btn" onclick="window.location.href='/comparison'">View Model Comparison</button>
+            </div>
+
+            <!-- Result Display Section -->
+            {% if show_result %}
+            <div class="result-section">
+                <div class="disease-name">🩺 Detected Disease: {{ disease }}</div>
+                <h2>📋 Possible Causes:</h2>
+                <p>{{ cause }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

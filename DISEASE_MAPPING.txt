@@ -1,0 +1,67 @@
+================================================================================
+                    DISEASE LABEL MAPPING REFERENCE
+================================================================================
+
+This table shows how each numeric disease label (0-13) maps to specific 
+blood disorders based on the Training.csv dataset analysis.
+
+--------------------------------------------------------------------------------
+| Label | Disease Name          | Sample Count | Key Abnormal Parameter        |
+--------------------------------------------------------------------------------
+|   0   | Anemia                |     11       | LOW Hemoglobin (HGB)          |
+|   1   | Polycythemia          |     42       | HIGH Red Blood Cells (RBC)    |
+|   2   | Leukocytosis          |      6       | VERY HIGH White Blood Cells   |
+|   3   | Leukopenia            |     34       | LOW White Blood Cells (WBC)   |
+|   4   | Thrombocytopenia      |     16       | LOW Platelets (PLT)           |
+|   5   | Thrombocytosis        |     10       | HIGH Platelets (PLT)          |
+|   6   | Neutropenia           |     14       | LOW Neutrophils (NEUT)        |
+|   7   | Neutrophilia          |      7       | HIGH Neutrophils (NEUT)       |
+|   8   | Lymphocytopenia       |      6       | LOW Lymphocytes (LYMPH)       |
+|   9   | Lymphocytosis         |      8       | HIGH Lymphocytes (LYMPH)      |
+|  10   | Monocytes High        |      8       | HIGH Monocytes (MONO)         |
+|  11   | Eosinophil High       |     26       | HIGH Eosinophils (EOS)        |
+|  12   | Basophil High         |      6       | HIGH Basophils (BASO)         |
+|  13   | Normal                |    105       | All Parameters Normal         |
+--------------------------------------------------------------------------------
+                                               TOTAL:  299 samples
+
+================================================================================
+                            QUICK REFERENCE
+================================================================================
+
+Blood Parameters (9 features):
+  - WBC   : White Blood Cell Count
+  - RBC   : Red Blood Cell Count
+  - HGB   : Hemoglobin Level
+  - PLT   : Platelet Count
+  - NEUT  : Neutrophils Count
+  - LYMPH : Lymphocytes Count
+  - MONO  : Monocytes Count
+  - EOS   : Eosinophils Count
+  - BASO  : Basophils Count
+
+Most Common Diseases in Dataset:
+  1. Normal (13)           - 105 samples (35.0%)
+  2. Polycythemia (1)      -  42 samples (14.0%)
+  3. Leukopenia (3)        -  34 samples (11.3%)
+
+Least Common Diseases:
+  - Leukocytosis (2)       -   6 samples (2.0%)
+  - Lymphocytopenia (8)    -   6 samples (2.0%)
+  - Basophil High (12)     -   6 samples (2.0%)
+
+================================================================================
+
+How to Use:
+  When the ML model predicts a number (0-13), use this table to find the 
+  corresponding disease name. For example:
+    - Model predicts: 3  →  Disease: Leukopenia
+    - Model predicts: 13 →  Disease: Normal
+
+Note:
+  Disease label 13 (Normal) has the most samples because healthy/normal cases
+  are typically the majority class in medical datasets.
+
+================================================================================
+                        Generated: November 8, 2025
+================================================================================
